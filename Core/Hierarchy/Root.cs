@@ -30,8 +30,23 @@ namespace AppEngine.Core
             if (_inherit == null || _inherit != typeof(Node))
                 throw new Exception("Cannot register non or non inherited node.");
             Guid _newGuid = Guid.NewGuid();
-            _nodeRegistery.Add(new KeyValuePair<Guid, object>(_newGuid, _node));
+
+            lock(_nodeRegistery)
+                _nodeRegistery.Add(new KeyValuePair<Guid, object>(_newGuid, _node));
+
             return _newGuid;
+        }
+
+        internal void DestroyNode(Guid nodeID)
+        {
+            lock(_nodeRegistery)
+            {
+                Node _node = (Node)_nodeRegistery.Find(x => x.Key == nodeID).Value;
+                _node.Destroy();
+                _nodeRegistery.Remove(
+                    _nodeRegistery.Find(x => x.Key == nodeID)
+                );
+            }
         }
         #endregion
 
