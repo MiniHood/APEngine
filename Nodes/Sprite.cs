@@ -5,7 +5,7 @@ namespace AppEngine.Nodes
     internal class Sprite : Node
     {
         // TODO
-        public Sprite(int id, string pixel = "!", bool isVisible = true) : base(id, pixel, isVisible)
+        public Sprite(string pixel = "!", bool isVisible = true) : base(pixel, isVisible)
         {
         }
 
