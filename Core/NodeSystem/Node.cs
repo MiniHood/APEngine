@@ -22,5 +22,8 @@
             _pixel = pixel;
             _isVisible = isVisible;
         }
+
+        ~Node()
+        {}
     }
 }
