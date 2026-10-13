@@ -9,6 +9,7 @@ namespace AppEngine.Core.Graphics
          * 1. Count frames printed per second
          * 2. Restrict frames printed per second
          * 3. Inspect each frame when in a debug mode? (Optional, might not be needed at all)
+         * 4. Interact with Visible Nodes
          * */
 
         private static int _cWidth = Console.WindowWidth;
